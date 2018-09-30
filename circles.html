@@ -4,9 +4,11 @@
 	<title>KeyBoard Play</title>
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
+	<script type="text/javascript" src=""></script>
 	<link rel="stylesheet" type="text/css" href="circles.css">
 
 	<script type="text/paperscript" canvas="myCanvas">
+
 		var keyData = {
 			q: {
 				sound: new Howl({
@@ -190,9 +192,19 @@
 				}
 			}
 		}
+
+		var body =document.querySelector('body');
+		body.addEventListener('keypress',function(){
+			var infoMessage = document.querySelector('.info-msg');
+			if(infoMessage) {
+				infoMessage.style.opacity = '0';
+				setTimeout(function(){infoMessage.parentNode.removeChild(infoMessage);}, 1000);
+			}
+		})
 	</script>
 </head>
 <body>
+	<span class="info-msg">Press keys A-Z</span>
 	<canvas id="myCanvas" resize></canvas>
 </body>
 </html>
